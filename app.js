@@ -46,7 +46,7 @@ function sendMail({email,travelOptions,name,phone,message}){
     })
 }
 
-app.post("/doryina-backend.onrender.com", (req,res) => {
+app.post("/sendMail", (req,res) => {
     sendMail(req.body)
     .then(response => res.status(200).json({data: req.body, response}))
     .catch(err => res.status(500).json({message: err}))
