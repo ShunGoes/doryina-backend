@@ -9,7 +9,7 @@ app.use(cors({ origin: "*" }));
 app.use(express.json({limit: "25mb"}))
 app.use(express.urlencoded({limit: "25mb"}))
 
-
+// nodemailer functionality
 function sendMail({email,travelOptions,name,phone,message}){
 
     return new Promise((resolve, reject) => {
@@ -21,6 +21,7 @@ function sendMail({email,travelOptions,name,phone,message}){
             }
         })
 
+        // nodemailer email config template
         const email_configs = {
             from: "favourkcb@gmail.com",
             to: "favourkcb@gmail.com",
@@ -32,8 +33,7 @@ function sendMail({email,travelOptions,name,phone,message}){
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Phone:</strong> ${phone}</p>
             <p><strong>Message:</strong> ${message}</p>
-          `  // HTML content only
-        
+          `
         }
 
         transporter.sendMail(email_configs, (error,info) => {
@@ -46,6 +46,7 @@ function sendMail({email,travelOptions,name,phone,message}){
     })
 }
 
+// send form response to this endpoint
 app.post("/sendMail", (req,res) => {
     sendMail(req.body)
     .then(response => res.status(200).json({data: req.body, response}))
