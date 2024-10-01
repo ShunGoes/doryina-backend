@@ -16,15 +16,15 @@ function sendMail({email,travelOptions,name,phone,message}){
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: "favourkcb@gmail.com",
-                pass: "xnappmyqmasnzyue"
+                user: "doryinaenterprise@gmail.com",
+                pass: "vreqclfomlijlaxo"
             }
         })
 
         // nodemailer email config template
         const email_configs = {
-            from: "favourkcb@gmail.com",
-            to: "favourkcb@gmail.com",
+            from: "doryinaenterprise@gmail.com",
+            to: "doryinaenterprise@gmail.com",
             subject: `New Travel Inquiry from ${name}`,
             html: `
             <h1>New Travel Inquiry</h1>
